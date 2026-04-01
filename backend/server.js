@@ -10,8 +10,13 @@ const clientsRoutes = require('./routes/clients');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors());
+// Middleware – allow ALL origins, methods, and headers
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.options('*', cors());   // handle preflight requests for every route
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
