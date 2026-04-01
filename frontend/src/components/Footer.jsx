@@ -4,7 +4,16 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">Srikanth Nursery</h3>
+            <div className="flex items-center mb-4">
+              <img
+                src="/logo.png"
+                alt="Srikanth Nursery Logo"
+                className="h-12 w-auto"
+              />
+              <span className="ml-3 text-xl font-bold text-white">
+                Srikanth Nursery
+              </span>
+            </div>
             <p className="text-gray-400 mb-4">
               Transforming outdoor spaces into sustainable and beautiful environments since 2008.
             </p>

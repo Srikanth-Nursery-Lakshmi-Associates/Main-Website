@@ -15,11 +15,16 @@ const Navbar = () => {
     <nav className="bg-white shadow-md fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0">
-            <h1 className="text-xl sm:text-2xl font-bold text-green-700">
+          <a href="#home" className="flex items-center">
+            <img
+              src="/logo.png"
+              alt="Srikanth Nursery Logo"
+              className="h-10 w-auto"
+            />
+            <span className="ml-3 text-xl sm:text-2xl font-bold text-green-700 hidden sm:block">
               Srikanth Nursery
-            </h1>
-          </div>
+            </span>
+          </a>
 
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
