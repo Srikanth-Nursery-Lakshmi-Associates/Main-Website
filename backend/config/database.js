@@ -11,7 +11,8 @@ const pool = new Pool({
   connectionString: databaseUrl,
   ssl: {
     rejectUnauthorized: false
-  }
+  },
+  family: 4
 });
 
 pool.on('connect', () => {
