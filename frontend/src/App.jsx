@@ -1,63 +1,27 @@
-import { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import Projects from './components/Projects';
-import Clients from './components/Clients';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import api from './services/api';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { DataProvider, useData } from './context/DataContext';
+import Layout from './components/Layout';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ServicesPage from './pages/ServicesPage';
+import ProjectsPage from './pages/ProjectsPage';
+import ClientsPage from './pages/ClientsPage';
+import ContactPage from './pages/ContactPage';
 
-function App() {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState({
-    companyInfo: null,
-    services: {},
-    projects: [],
-    clients: [],
-    contactInfo: []
-  });
-
-  useEffect(() => {
-    const fetchAllData = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const [companyInfo, services, projects, clients, contactInfo] = await Promise.all([
-          api.getCompanyInfo().catch(() => null),
-          api.getGroupedServices().catch(() => ({})),
-          api.getProjects().catch(() => []),
-          api.getClients().catch(() => []),
-          api.getContactInfo().catch(() => [])
-        ]);
-
-        setData({
-          companyInfo,
-          services,
-          projects,
-          clients,
-          contactInfo
-        });
-      } catch (err) {
-        console.error('Error fetching data:', err);
-        setError('Failed to load website data. Please check if the backend server is running.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchAllData();
-  }, []);
+const AppRoutes = () => {
+  const { loading, error } = useData();
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100">
+      <div className="min-h-screen flex items-center justify-center" style={{ background: '#fcf9f4' }}>
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-600"></div>
-          <p className="mt-4 text-xl text-gray-700">Loading...</p>
+          <div
+            className="inline-block animate-spin rounded-full border-4"
+            style={{ width: '56px', height: '56px', borderColor: '#e8e2d9', borderTopColor: '#755b00' }}
+          />
+          <p className="mt-6" style={{ fontFamily: "'Inter', sans-serif", fontSize: '15px', color: '#717973' }}>
+            Loading…
+          </p>
         </div>
       </div>
     );
@@ -65,19 +29,24 @@ function App() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100">
-        <div className="bg-white p-8 rounded-lg shadow-lg max-w-md">
-          <div className="text-red-600 text-5xl mb-4 text-center">⚠</div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">Connection Error</h2>
-          <p className="text-gray-600 mb-6 text-center">{error}</p>
-          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-            <p className="text-sm text-yellow-700">
-              <strong>Note:</strong> Make sure the backend server is running on port 3000 and Supabase is configured.
+      <div className="min-h-screen flex items-center justify-center" style={{ background: '#fcf9f4' }}>
+        <div className="p-10 rounded-xl max-w-md w-full mx-4 luxury-shadow" style={{ background: '#ffffff' }}>
+          <div className="text-center mb-6" style={{ fontSize: '2.5rem', color: '#ba1a1a' }}>&#9888;</div>
+          <h2 className="text-center mb-3" style={{ fontFamily: "'Playfair Display', serif", fontSize: '22px', fontWeight: 600, color: '#012d1d' }}>
+            Connection Error
+          </h2>
+          <p className="text-center mb-6" style={{ fontFamily: "'Inter', sans-serif", fontSize: '14px', color: '#717973' }}>{error}</p>
+          <div className="rounded-lg p-4 mb-6" style={{ background: 'rgba(254,217,119,0.2)', border: '1px solid rgba(117,91,0,0.2)' }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', color: '#755b00' }}>
+              Ensure the backend server is running on port 3000 and Supabase is configured.
             </p>
           </div>
           <button
             onClick={() => window.location.reload()}
-            className="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition-colors"
+            className="w-full rounded-full transition-all duration-300"
+            style={{ background: '#012d1d', color: '#ffffff', padding: '12px 24px', fontFamily: "'Inter', sans-serif", fontSize: '14px', fontWeight: 600, border: 'none', cursor: 'pointer' }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = '#1b4332')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = '#012d1d')}
           >
             Retry
           </button>
@@ -87,16 +56,26 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <Hero companyInfo={data.companyInfo} />
-      <About companyInfo={data.companyInfo} />
-      <Services services={data.services} />
-      <Projects projects={data.projects} />
-      <Clients clients={data.clients} />
-      <Contact contactInfo={data.contactInfo} />
-      <Footer />
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="services" element={<ServicesPage />} />
+        <Route path="projects" element={<ProjectsPage />} />
+        <Route path="clients" element={<ClientsPage />} />
+        <Route path="contact" element={<ContactPage />} />
+      </Route>
+    </Routes>
+  );
+};
+
+function App() {
+  return (
+    <DataProvider>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </DataProvider>
   );
 }
 
