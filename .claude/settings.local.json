@@ -1,7 +1,33 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(claude mcp *)",
+      "mcp__stitch__list_projects",
+      "mcp__stitch__list_screens",
+      "WebFetch(domain:contribution.usercontent.google.com)",
+      "mcp__stitch__get_screen",
+      "Bash(curl -s \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzBhZGRkYzkwNzk3YzRhYzFhMDc0ODUzMzNhNWE4MDNlEgoSBhDK6teBLxgBkgEkCgpwcm9qZWN0X2lkEhZCFDE0NDI3MTQ4NzgxNjg4MTI0NTMx&filename=&opi=89354086\")",
+      "Read(//tmp/**)",
+      "Bash(curl -s \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzliMzUxMDU5NzlkNjRhMmQ4NDUyMjhhODc3YjM4ZjU5EgoSBhDK6teBLxgBkgEkCgpwcm9qZWN0X2lkEhZCFDE0NDI3MTQ4NzgxNjg4MTI0NTMx&filename=&opi=89354086\")",
+      "Bash(curl -s \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2Q5MmFjZTJlZWE1ZDQxYzZhNzZjNDUwNmQzYzE2ZDgyEgoSBhDK6teBLxgBkgEkCgpwcm9qZWN0X2lkEhZCFDE0NDI3MTQ4NzgxNjg4MTI0NTMx&filename=&opi=89354086\")",
+      "Bash(curl -s \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzBlNWU2OGI1ZmNjYTQ1NTk4YmEzNWQ4MmY0ZDA3N2M4EgoSBhDK6teBLxgBkgEkCgpwcm9qZWN0X2lkEhZCFDE0NDI3MTQ4NzgxNjg4MTI0NTMx&filename=&opi=89354086\")",
+      "Bash(curl -s \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2RlYzdkODc3ZjhlYzQ4MTFhMzQxNjA2NDA1NWI1ZTMyEgoSBhDK6teBLxgBkgEkCgpwcm9qZWN0X2lkEhZCFDE0NDI3MTQ4NzgxNjg4MTI0NTMx&filename=&opi=89354086\")",
+      "Bash(curl -s \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzEyOWZjYTI5Y2NkYjQ2Yzg4Yzg2NmRjODkzOGI2YWI2EgoSBhDK6teBLxgBkgEkCgpwcm9qZWN0X2lkEhZCFDE0NDI3MTQ4NzgxNjg4MTI0NTMx&filename=&opi=89354086\")",
+      "Bash(npm run *)",
+      "Bash(npx vite *)",
+      "Bash(curl -s \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzBhZGRkYzkwNzk3YzRhYzFhMDc0ODUzMzNhNWE4MDNlEgoSBhDK6teBLxgBkgEkCgpwcm9qZWN0X2lkEhZCFDE0NDI3MTQ4NzgxNjg4MTI0NTMx&filename=&opi=89354086\" -o /tmp/stitch_home.html)",
+      "Bash(curl -s \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzliMzUxMDU5NzlkNjRhMmQ4NDUyMjhhODc3YjM4ZjU5EgoSBhDK6teBLxgBkgEkCgpwcm9qZWN0X2lkEhZCFDE0NDI3MTQ4NzgxNjg4MTI0NTMx&filename=&opi=89354086\" -o /tmp/stitch_about.html)",
+      "Bash(curl -s \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzBlNWU2OGI1ZmNjYTQ1NTk4YmEzNWQ4MmY0ZDA3N2M4EgoSBhDK6teBLxgBkgEkCgpwcm9qZWN0X2lkEhZCFDE0NDI3MTQ4NzgxNjg4MTI0NTMx&filename=&opi=89354086\" -o /tmp/stitch_services.html)",
+      "Bash(curl -s \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2Q5MmFjZTJlZWE1ZDQxYzZhNzZjNDUwNmQzYzE2ZDgyEgoSBhDK6teBLxgBkgEkCgpwcm9qZWN0X2lkEhZCFDE0NDI3MTQ4NzgxNjg4MTI0NTMx&filename=&opi=89354086\" -o /tmp/stitch_projects.html)",
+      "Bash(curl -s \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzEyOWZjYTI5Y2NkYjQ2Yzg4Yzg2NmRjODkzOGI2YWI2EgoSBhDK6teBLxgBkgEkCgpwcm9qZWN0X2lkEhZCFDE0NDI3MTQ4NzgxNjg4MTI0NTMx&filename=&opi=89354086\" -o /tmp/stitch_clients.html)",
+      "Bash(curl -s \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2RlYzdkODc3ZjhlYzQ4MTFhMzQxNjA2NDA1NWI1ZTMyEgoSBhDK6teBLxgBkgEkCgpwcm9qZWN0X2lkEhZCFDE0NDI3MTQ4NzgxNjg4MTI0NTMx&filename=&opi=89354086\" -o /tmp/stitch_contact.html)",
+      "Bash(curl -s https://main-website-3ose.onrender.com/api/company/info)",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s https://main-website-3ose.onrender.com/api/company/contact)",
+      "Bash(curl -s https://main-website-3ose.onrender.com/api/services)",
+      "Bash(curl -s https://main-website-3ose.onrender.com/api/projects)",
+      "Bash(curl -s https://main-website-3ose.onrender.com/)"
     ]
   }
 }
