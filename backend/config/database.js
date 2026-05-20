@@ -10,19 +10,21 @@ if (!databaseUrl) {
 }
 
 // Resolve hostname to an IPv4 address before connecting.
-// Render's network is IPv4-only; without this, Node.js may pick the AAAA record
-// and fail with ENETUNREACH.
+// Render's network does not support IPv6 outbound; without this, Node.js may
+// pick an AAAA record and fail with ENETUNREACH.
 const poolPromise = (async () => {
   const config = parse(databaseUrl);
   try {
     const [ipv4] = await resolve4(config.host);
     config.host = ipv4;
-  } catch {
-    // DNS lookup failed — let pg try with the original hostname
+    console.log(`DB host resolved to IPv4: ${ipv4}`);
+  } catch (err) {
+    console.warn(`resolve4 failed for "${config.host}": ${err.message} — falling back to hostname`);
   }
   const pool = new Pool({
     ...config,
     ssl: { rejectUnauthorized: false },
+    family: 4, // tell pg's dns.lookup to only return IPv4, belt-and-suspenders
   });
   pool.on('connect', () => console.log('Connected to PostgreSQL database'));
   pool.on('error', (err) => {
